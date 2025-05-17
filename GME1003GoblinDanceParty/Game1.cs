@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System;
+using System.Diagnostics;
 using Microsoft.Xna.Framework.Media;
 
 namespace GME1003GoblinDanceParty
@@ -40,8 +41,10 @@ namespace GME1003GoblinDanceParty
 
         protected override void Initialize()
         {
-            _rng = new Random();        //finish setting up our Randon 
-            _numStars = 100;              //this would be better as a random number between 100 and 300
+            _rng = new Random();        //finish setting up our Random TODO: I feel like I'm missing something here..
+            _numStars = _rng.Next(50, 300);              //this would be better as a random number between 100 and 300. TODO: Task 1 (Completed). Was it really that easy? Were you expecting more??
+            // TODO: Assignmentt instructions not seen here instruct between 50 and 300. Went with that.
+            Console.WriteLine("Number of stars this run: " + _numStars); // this prints to console star count each run, for debugging and has no impact on the game.
             _starsX = new List<int>();  //stars X coordinate
             _starsY = new List<int>();  //stars Y coordinate
 
