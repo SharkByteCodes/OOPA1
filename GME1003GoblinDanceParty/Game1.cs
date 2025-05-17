@@ -88,7 +88,7 @@ namespace GME1003GoblinDanceParty
             music = Content.Load<Song>("chiptune");
             
             //if you're tired of the music player, comment this out!
-            MediaPlayer.Play(music);
+            //  MediaPlayer.Play(music);
 
         }
 
@@ -106,7 +106,7 @@ namespace GME1003GoblinDanceParty
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             
             _spriteBatch.Begin();

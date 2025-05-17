@@ -1,5 +1,44 @@
 # OOPA1
-Goblin Dance Party
+### Goblin Dance Party
+
+Object-Oriented Programming Assignment 1
+
+Purpose: To develop an understanding in how to use Git and GitHub.
+
+---
+This README helps discuss, in brief, the work completed over the course of this project.
+
+---
 
 
-#### This will include some information about the chages to this project over time..
+### Tasks for MonoGame Refresh (6 total)
+1. - [ ] Each star == random number of stars (~50-300).
+2. - [ ] Each star == different rotation.
+3. - [ ] Each star == different transparency.
+4. - [ ] Each star == different
+5. - [ ] Each star == different colour
+6. - [ ] Customize and personalize (custom draw statement for new background, changing stars to something cool)
+---
+
+### Describe how I decided when it was appropriate to commit/push changes
+
+In general, pushes are made when moderate changes have been made. example, a large addition (or other major changes) to the readme, especially where the readme references new features.
+
+>The decisions were guided by some fair rules (paraphrased from original instructions):
+> - several commits, good comments, meanful pushes.
+> - absense of micro-changes (lots of pushes, minimal changes)
+> - no copy-paste-push cycle
+> - "evidence of an understanding of the process/flow of the commit/push cycle.
+
+
+---
+### Number of commits/pushes executed
+TBD
+
+---
+### Any specific troubles encountered with GitHub or completing the assignment
+Yes. To be expanded on.
+
+---
+### AI Use Declaration
+Currently, no AI was used for the duration of the assignment.
