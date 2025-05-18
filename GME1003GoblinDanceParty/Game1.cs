@@ -20,7 +20,8 @@ namespace GME1003GoblinDanceParty
 
         private List<float> _starRotate; // Task 2 (declare)
         private List<float> _starOpacity; // Task 3 (delcare)
-        private List<float> _starSize; // Task (declare)
+        private List<float> _starSize; // Task 4 (declare)
+        private List<Color> _starHue; // Task 5 (delcare)
 
 
         private Texture2D _starSprite;  //the sprite image for our star
@@ -57,6 +58,7 @@ namespace GME1003GoblinDanceParty
             _starRotate = new List<float>(); // Task 2 (initialize list)
             _starOpacity = new List<float>(); // Task 3 (initialize list)
             _starSize = new List<float>(); // Task 4 (initialize list)
+            _starHue = new List<Color>(); // Task 5 (initialize list)
             
             
             _starColor = new Color(128 + _rng.Next(0,129), 128 + _rng.Next(0, 129), 128 + _rng.Next(0, 129));                   //this is a "relatively" easy way to create random colors
@@ -85,37 +87,45 @@ namespace GME1003GoblinDanceParty
                 _starRotate.Add(_rng.NextSingle()); // Why does this work now?
             }
             
-            // Console Debuggy information
-            Console.WriteLine("---------------");
-            Console.WriteLine("Star 55 has volunteered as tribute."); // or has it?
-            Console.WriteLine("X position: " + _starsX[55] + ", Y position: " + _starsY[55]);
-            Console.WriteLine("Number of items in rotation list: " + _starRotate.Count);
-            Console.WriteLine("Rotation of star number 55: " + _starRotate[55]); // Debug Star Rotation on star 55
             
             // List of star opacity (Task 3)
             for (int i = 0; i < _numStars; i++)
             {
                 _starOpacity.Add(_rng.Next(25,100) /100f); // tested with NextSingle, couldn't set MinValue to .25f
             }
-            Console.WriteLine("Opacity of star number 55: " + _starOpacity[55]);
             
             // List for star size (Task 4)
             for (int i = 0; i < _numStars; i++)
             {
                 _starSize.Add(_rng.Next(25, 100) / 200f);
             }
-            Console.WriteLine("Size of star number 55: " + _starSize[55]);
+
+            for (int i = 0; i < _numStars; i++)
+            {
+                Color newColor = new Color(128 + _rng.Next(0,129), 128 + _rng.Next(0, 129), 128 + _rng.Next(0, 129));
+                _starHue.Add(newColor);
+            }
             
             //TODO: 6. Custom Background (800x480), maybe something custom , some other cool stuff to add
             
-            //ToDo: 5. List of Colors
+            //ToDo: 5. List of Colors (complete)
             
-            //ToDo: 4. List of scale values
+            //ToDo: 4. List of scale values (Complete)
 
             //ToDo: 3. List of transparency values (Complete)
 
             //ToDo: 2. List of rotation values (Complete, sloppy?)
 
+            // Console Debuggy information
+            Console.WriteLine("---------------");
+            Console.WriteLine("Star 55 has volunteered as tribute."); // or has it?
+            Console.WriteLine("X position: " + _starsX[55] + ", Y position: " + _starsY[55]);
+            Console.WriteLine("Number of items in rotation list: " + _starRotate.Count);
+            Console.WriteLine("Rotation of star number 55: " + _starRotate[55]); // Debug Star Rotation on star 55
+            Console.WriteLine("Opacity of star number 55: " + _starOpacity[55]);
+            Console.WriteLine("Size of star number 55: " + _starSize[55]);
+            Console.WriteLine("Hue of star number 55: " + _starHue[55]);
+            
 
             base.Initialize();
         }
@@ -165,7 +175,7 @@ namespace GME1003GoblinDanceParty
                 _spriteBatch.Draw(_starSprite, 
                     new Vector2(_starsX[i], _starsY[i]),    //set the star position
                     null,                                   //ignore this
-                    _starColor * _starOpacity[i],         //set colour and transparency (now uses per star list)
+                    _starHue[i] * _starOpacity[i],         //set colour and transparency (now uses per star list)
                     _starRotate[i],                          //set rotation (now uses rotation list)
                     new Vector2(_starSprite.Width / 2, _starSprite.Height / 2), //ignore this
                     new Vector2(_starSize[i], _starSize[i]),    //set scale (same number 2x)
