@@ -21,7 +21,7 @@ This README helps discuss, in brief, the work completed over the course of this 
 
 Task completion: ```33.6/100%```
 
-[^1]: Sloppy, uses int 0,360 not float as desired, but close to guidance.
+[^1]: ~~Sloppy~~ Fixed! Uses NextSingle method now. 
 
 ---
 
