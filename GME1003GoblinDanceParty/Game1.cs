@@ -18,6 +18,8 @@ namespace GME1003GoblinDanceParty
         private List<int> _starsX;      //list of star x-coordinates
         private List<int> _starsY;      //list of star y-coordinates
 
+        private List<int> _starRotate; // Task 2 (declare)
+
         private Texture2D _starSprite;  //the sprite image for our star
 
         private Random _rng;            //for all our random number needs
@@ -42,22 +44,27 @@ namespace GME1003GoblinDanceParty
         protected override void Initialize()
         {
             _rng = new Random();        //finish setting up our Random TODO: I feel like I'm missing something here..
-            _numStars = _rng.Next(50, 300);              //this would be better as a random number between 100 and 300. TODO: Task 1 (Completed). Was it really that easy? Were you expecting more??
-            // TODO: Assignmentt instructions not seen here instruct between 50 and 300. Went with that.
+            _numStars = _rng.Next(50, 100);              //this would be better as a random number between 100 and 300. TODO: Task 1 (Completed). Was it really that easy? Were you expecting more??
+            // TODO: Assignment instructions not seen here instruct between 50 and 300. Went with that.
             Console.WriteLine("Number of stars this run: " + _numStars); // this prints to console star count each run, for debugging and has no impact on the game.
             _starsX = new List<int>();  //stars X coordinate
             _starsY = new List<int>();  //stars Y coordinate
-
+            
+            _starRotate = new List<int>(); // Task 2 (initialize list)
+            
+            
             _starColor = new Color(128 + _rng.Next(0,129), 128 + _rng.Next(0, 129), 128 + _rng.Next(0, 129));                   //this is a "relatively" easy way to create random colors
             _starScale = _rng.Next(50, 100) / 200f; //this will affect the size of the stars
             _starTransparency = _rng.Next(25, 101)/100f;   //star transparency
             _starRotation = _rng.Next(0, 101) / 100f;       //star rotation
+            
 
             //use a separate for loop for each list - for practice
             //List of X coordinates
             for (int i = 0; i < _numStars; i++) 
             { 
-                _starsX.Add(_rng.Next(0, 801)); //all star x-coordinates are between 0 and 801
+                _starsX.Add(_rng.Next(0, 801)); //all star x-coordinates are between 0 and 800
+                
             }
 
             //List of Y coordinates
@@ -66,13 +73,20 @@ namespace GME1003GoblinDanceParty
                 _starsY.Add(_rng.Next(0, 481)); //all star y-coordinates are between 0 and 480
             }
 
-            //ToDo: List of Colors
+            for (int i = 0; i < _numStars; i++) // Task 2 (loop count for each star)
+            {
+                _starRotate.Add(_rng.Next(0, 360)); // Why isn't it accepting NextSingle or ".. / 100f"
+            }
+            Console.WriteLine("Rotation of star number 55: " + _starRotate[55]); // Debug Star Rotation
+            //TODO: 6. Custom Background (800x480), maybe something custom , some other cool stuff to add
             
-            //ToDo: List of scale values
+            //ToDo: 5. List of Colors
+            
+            //ToDo: 4. List of scale values
 
-            //ToDo: List of transparency values
+            //ToDo: 3. List of transparency values
 
-            //ToDo: List of rotation values
+            //ToDo: 2. List of rotation values (Complete, sloppy)
 
 
             base.Initialize();
@@ -124,20 +138,21 @@ namespace GME1003GoblinDanceParty
                     new Vector2(_starsX[i], _starsY[i]),    //set the star position
                     null,                                   //ignore this
                     _starColor * _starTransparency,         //set colour and transparency
-                    _starRotation,                          //set rotation
+                    _starRotate[i],                          //set rotation
                     new Vector2(_starSprite.Width / 2, _starSprite.Height / 2), //ignore this
                     new Vector2(_starScale, _starScale),    //set scale (same number 2x)
                     SpriteEffects.None,                     //ignore this
                     0f);                                    //ignore this
             }
             _spriteBatch.End();
-
+            
 
 
             //***This is for the goblin. Ignore it for now.
             goblin.Draw(_spriteBatch);
 
             base.Draw(gameTime);
+
         }
     }
 }

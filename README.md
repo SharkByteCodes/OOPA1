@@ -13,11 +13,16 @@ This README helps discuss, in brief, the work completed over the course of this 
 
 ### Tasks for MonoGame Refresh (6 total)
 1. - [x] Each star == random number of stars (~50-300).
-2. - [ ] Each star == different rotation.
+2. - [x] Each star == different rotation. [^1]
 3. - [ ] Each star == different transparency.
-4. - [ ] Each star == different.
+4. - [ ] Each star == different size/scale.
 5. - [ ] Each star == different colour.
-6. - [ ] Customize and personalize (custom draw statement for new background, changing stars to something cool)
+6. - [ ] Customize and personalize (custom draw statement for new background, changing stars to something cool).
+
+Task completion: ```33.6/100%```
+
+[^1]: Sloppy, uses int 0,360 not float as desired, but close to guidance.
+
 ---
 
 ### Describe how I decided when it was appropriate to commit/push changes
