@@ -16,7 +16,7 @@ namespace GME1003GoblinDanceParty
         //Declare some variables
         private int _numStars;          //how many stars?
         private List<int> _starsX;      //list of star x-coordinates
-        private List<int> _starsY;      //list of star y-coordinates
+        private List<int> _starsY;      //list of star y-coordinates'
 
         private List<float> _starRotate; // Task 2 (declare)
         private List<float> _starOpacity; // Task 3 (delcare)
@@ -25,6 +25,7 @@ namespace GME1003GoblinDanceParty
 
 
         private Texture2D _starSprite;  //the sprite image for our star
+        private Texture2D _background; // background sprite image
 
         private Random _rng;            //for all our random number needs
         private Color _starColor;       //let's have fun with colour!!
@@ -37,6 +38,8 @@ namespace GME1003GoblinDanceParty
         Goblin goblin;
         Song music;
 
+         //Goblin goblinBuddy;
+
 
         public Game1()
         {
@@ -48,7 +51,7 @@ namespace GME1003GoblinDanceParty
         protected override void Initialize()
         {
             _rng = new Random();        //finish setting up our Random TODO: I feel like I'm missing something here..
-            _numStars = _rng.Next(50, 100);              //this would be better as a random number between 100 and 300. TODO: Task 1 (Completed). Was it really that easy? Were you expecting more??
+            _numStars = _rng.Next(50, 300);              //this would be better as a random number between 100 and 300. TODO: Task 1 (Completed). Was it really that easy? Were you expecting more??
             // TODO: Assignment instructions not seen here instruct between 50 and 300. Went with that.
             Console.WriteLine("Number of stars this run: " + _numStars); // this prints to console star count each run, for debugging and has no impact on the game.
             _starsX = new List<int>();  //stars X coordinate
@@ -59,7 +62,6 @@ namespace GME1003GoblinDanceParty
             _starOpacity = new List<float>(); // Task 3 (initialize list)
             _starSize = new List<float>(); // Task 4 (initialize list)
             _starHue = new List<Color>(); // Task 5 (initialize list)
-            
             
             _starColor = new Color(128 + _rng.Next(0,129), 128 + _rng.Next(0, 129), 128 + _rng.Next(0, 129));                   //this is a "relatively" easy way to create random colors
             _starScale = _rng.Next(25, 100) / 200f; //this will affect the size of the stars
@@ -100,34 +102,36 @@ namespace GME1003GoblinDanceParty
                 _starSize.Add(_rng.Next(25, 100) / 200f);
             }
 
+            //List for colors
             for (int i = 0; i < _numStars; i++)
             {
-                Color newColor = new Color(128 + _rng.Next(0,129), 128 + _rng.Next(0, 129), 128 + _rng.Next(0, 129));
+                Color newColor = new Color(128 + _rng.Next(0, 129), 128 + _rng.Next(0, 129), 128 + _rng.Next(0, 129));
                 _starHue.Add(newColor);
             }
-            
+
             //TODO: 6. Custom Background (800x480), maybe something custom , some other cool stuff to add
+
+                //ToDo: 5. List of Colors (complete)
+
+                //ToDo: 4. List of scale values (Complete)
+
+                //ToDo: 3. List of transparency values (Complete)
+
+                //ToDo: 2. List of rotation values (Complete, sloppy?)
+
+                // Console Debuggy information
+                Console.WriteLine("---------------");
+                Console.WriteLine("Star 55 has volunteered as tribute."); // or has it?
+                Console.WriteLine("X position: " + _starsX[55] + ", Y position: " + _starsY[55]);
+                Console.WriteLine("Number of items in rotation list: " + _starRotate.Count);
+                Console.WriteLine("Rotation of star number 55: " + _starRotate[55]); // Debug Star Rotation on star 55
+                Console.WriteLine("Opacity of star number 55: " + _starOpacity[55]);
+                Console.WriteLine("Size of star number 55: " + _starSize[55]);
+                Console.WriteLine("Hue of star number 55: " + _starHue[55]);
+
+
+                base.Initialize();
             
-            //ToDo: 5. List of Colors (complete)
-            
-            //ToDo: 4. List of scale values (Complete)
-
-            //ToDo: 3. List of transparency values (Complete)
-
-            //ToDo: 2. List of rotation values (Complete, sloppy?)
-
-            // Console Debuggy information
-            Console.WriteLine("---------------");
-            Console.WriteLine("Star 55 has volunteered as tribute."); // or has it?
-            Console.WriteLine("X position: " + _starsX[55] + ", Y position: " + _starsY[55]);
-            Console.WriteLine("Number of items in rotation list: " + _starRotate.Count);
-            Console.WriteLine("Rotation of star number 55: " + _starRotate[55]); // Debug Star Rotation on star 55
-            Console.WriteLine("Opacity of star number 55: " + _starOpacity[55]);
-            Console.WriteLine("Size of star number 55: " + _starSize[55]);
-            Console.WriteLine("Hue of star number 55: " + _starHue[55]);
-            
-
-            base.Initialize();
         }
 
         protected override void LoadContent()
@@ -137,14 +141,18 @@ namespace GME1003GoblinDanceParty
             //load out star sprite
             _starSprite = Content.Load<Texture2D>("starSprite");
 
+            _background = Content.Load<Texture2D>("mgcbwindow"); // load the disco background
+
 
             //***This is for the goblin. Ignore it for now.
             goblin = new Goblin(Content.Load<Texture2D>("goblinIdleSpriteSheet"), 400, 400);
             music = Content.Load<Song>("chiptune");
-            
+
             //if you're tired of the music player, comment this out!
             //  MediaPlayer.Play(music);
-
+            
+           //goblinBuddy = new Goblin(Content.Load<Texture2D>("goblinIdleSpriteSheet"), _rng.Next(450, 00), _rng.Next(500, 700));
+            
         }
 
         protected override void Update(GameTime gameTime)
@@ -155,6 +163,7 @@ namespace GME1003GoblinDanceParty
    
             //***This is for the goblin. Ignore it for now.
             goblin.Update(gameTime);
+            //goblinBuddy.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -168,6 +177,7 @@ namespace GME1003GoblinDanceParty
 
             //it would be great to have a background image here! 
             //you could make that happen with a single Draw statement.
+            _spriteBatch.Draw(_background, new Vector2(0, 0), Color.White);
 
             //this is where we draw the stars...
             for (int i = 0; i < _numStars; i++) 
@@ -188,6 +198,9 @@ namespace GME1003GoblinDanceParty
 
             //***This is for the goblin. Ignore it for now.
             goblin.Draw(_spriteBatch);
+            
+            //goblinBuddy.Draw(_spriteBatch); // I tried to give the goblin some friends to party with. Perhaps will try again another time..
+            
 
             base.Draw(gameTime);
 

@@ -17,9 +17,10 @@ This README helps discuss, in brief, the work completed over the course of this 
 3. - [x] Each star == different transparency.
 4. - [x] Each star == different size/scale.
 5. - [x] Each star == different colour.
-6. - [ ] Customize and personalize (custom draw statement for new background, changing stars to something cool).
+6. - [x] Customize and personalize (custom draw statement for new background, changing stars to something cool).
+7. - [ ] Refactor code 
 
-Task completion: ```83/100%```
+Task completion: ```91.3/100%```
 
 [^1]: ~~Sloppy~~ Fixed! Uses NextSingle method now. Short span between last and this commit (retraced steps with "Redo" button).
 
@@ -40,12 +41,17 @@ It feels nonsensical to push more frequently than once per task completed.
 
 ---
 ### Number of commits/pushes executed
-TBD
+12 commits, including completion of task 6.
 
 ---
 ### Any specific troubles encountered with GitHub or completing the assignment
-Yes. To be expanded on.
-
+- I had no issue cloning the repo to my local machine.
+- Significant issues merging/rebasing local to personal rep (after cloning)
+- followed instructed steps to download zip, then upload to empty repo. a pull was required to sync
+- Busy last few weeks with other obligations caused delays and missed prescribed deadline.
+- Took a bit of relearning the list function. I believe there are gaps.
+- Code will absolutely benefit from a series of refactoring since my work.
+- The MacOS version of the MGCB editor suddenly started working for the first time since setting up monogame on mac. No idea why, used as game background.
 ---
 ### AI Use Declaration
-Currently, no AI was used for the duration of the assignment.
+No AI was used for the duration of the assignment. Bing Copilot was actually disabled to avoid reading generated output usually printed at top of search results.
